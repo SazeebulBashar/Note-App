@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ACCESS_TOKEN, REFREASH_TOKEN } from '../constants';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 import api from '../api';
 import "../styles/Form.css";
 
@@ -12,16 +12,21 @@ export default function Form({route, method}) {
     const navigate = useNavigate();
 
     const name = method === "login" ? "Login" : "Register";
+
+
     const handleSubmit = async (e) =>{
         setLoading(true);
         e.preventDefault();
 
         try {
-            const res = await api.post(route, {userName, password});
+            const res = await api.post(route, {username: userName, password: password});
             if(method === "login"){
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
-                localStorage.setItem(REFREASH_TOKEN, res.data.refresh);
+                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
                 navigate("/");
+            }
+            else{
+                navigate("/login");
             }
         } catch (error) {
             console.log(error);
@@ -33,7 +38,7 @@ export default function Form({route, method}) {
     }
 
   return (
-    <form className='form-container' action="" method="post"  onSubmit={handleSubmit}>
+    <form className='form-container' onSubmit={handleSubmit}>
     <h1>{name}</h1>
     <input 
         className='form-input'
@@ -52,7 +57,7 @@ export default function Form({route, method}) {
         onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className='form-button' type="submit">{name}</button>
+        <button className='form-button' type="submit" >{name}</button>
 
     </form>
   )
