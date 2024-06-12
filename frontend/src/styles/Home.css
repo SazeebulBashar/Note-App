@@ -1,6 +1,14 @@
 /* Container for the whole page */
+body{
+  background-color: #eef0fb;
+
+
+}
 div {
-    font-family: Arial, sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
   }
   
   /* Styles for the notes section */
@@ -9,7 +17,7 @@ div {
   }
   
   .notes-section h2 {
-    color: #333;
+    color: #000000;
     font-size: 24px;
   }
   
@@ -33,7 +41,7 @@ div {
   }
   
   form h2 {
-    color: #333;
+    color: #000000;
     font-size: 24px;
     margin-bottom: 20px;
   }
@@ -65,4 +73,17 @@ div {
   
   form input[type="submit"]:hover {
     background-color: #0056b3;
+  }
+
+  .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px whitesmoke;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .heading{
+    font-size: 50px;
   }
