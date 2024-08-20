@@ -1,0 +1,11 @@
+name: my-docker-project
+
+services:
+  app:
+    image: note-app-api
+    container_name: note-app-container
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      
